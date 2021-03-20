@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react"
+import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <nav className="bg-gray-800">
-      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+    <nav className="bg-gray-800 fixed w-full z-20">
+      <div className="container mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
 
@@ -15,95 +15,176 @@ const Navbar = () => {
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-controls="mobile-menu"
               aria-expanded="false"
-            >
+              >
+
               <span className="sr-only">Open main menu</span>
 
-                {/*
-                Icon when menu is closed.
-                Heroicon name: outline/menu
-                Menu open: "hidden", Menu closed: "block"
-                */}
+              {/* Menu open: "hidden", Menu closed: "block" */}
+              <svg className="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
 
-              <svg
-                className="block h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+              {/* Menu open: "block", Menu closed: "hidden" */}
+              <svg className="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
-              {/*
-                Icon when menu is open.
-                Heroicon name: outline/x
-                Menu open: "block", Menu closed: "hidden"
-                */}
-              <svg
-                className="hidden h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
+
+
             </button>
           </div>
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex-shrink-0 flex items-center">
-              <img
-                className="block lg:hidden h-8 w-auto"
-                src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                alt="Workflow"
-              />
-              <img
-                className="hidden lg:block h-8 w-auto"
-                src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-                alt="Workflow"
-              />
+              <NavLink exact to="/" className="flex title-font font-medium items-center md:justify-start justify-center text-white">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                </svg>
+                <span className="ml-3 text-xl">React~TW</span>
+              </NavLink>
             </div>
+
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
-                {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-                <a
-                  href="#"
-                  className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Dashboard
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Team
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
+
+                <NavLink exact to="/" className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" >
+                  Home
+                </NavLink>
+                <NavLink exact to="/about" className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" >
+                  About
+                </NavLink>
+                <NavLink exact to="/teams" className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" >
+                  Teams
+                </NavLink>
+                <NavLink exact to="/projects" className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" >
                   Projects
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Calendar
-                </a>
+                </NavLink>
+                
+                <div className="relative">
+
+                {/* Item active: "text-gray-900", Item inactive: "text-gray-500" */}
+                <button type="button" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 inline-flex rounded-md text-sm font-medium" aria-expanded="false">
+                  <span>More</span>
+                  <svg className="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+                  </svg>
+                  
+                </button>
+
+                {/*
+                    'More' flyout menu, show/hide based on flyout menu state.
+                    Entering: "transition ease-out duration-200"
+                      From: "opacity-0 translate-y-1"
+                      To: "opacity-100 translate-y-0"
+                    Leaving: "transition ease-in duration-150"
+                      From: "opacity-100 translate-y-0"
+                      To: "opacity-0 translate-y-1"
+                */}
+
+                
+                  <div className="block absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-md sm:px-0">
+                  <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden" >
+                    <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+                      <a href="#" className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
+                        {/* Heroicon name: outline/support */}
+                        <svg className="flex-shrink-0 h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        <div className="ml-4">
+                          <p className="text-base font-medium text-gray-900">
+                            Help Center
+                          </p>
+                          <p className="mt-1 text-sm text-gray-500">
+                            Get all of your questions answered in our forums or contact support.
+                          </p>
+                        </div>
+                      </a>
+                      <a href="#" className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
+                        {/* Heroicon name: outline/bookmark-alt */}
+                        <svg className="flex-shrink-0 h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <div className="ml-4">
+                          <p className="text-base font-medium text-gray-900">
+                            Guides
+                          </p>
+                          <p className="mt-1 text-sm text-gray-500">
+                            Learn how to maximize our platform to get the most out of it.
+                          </p>
+                        </div>
+                      </a>
+                      <a href="#" className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
+                        {/* Heroicon name: outline/calendar */}
+                        <svg className="flex-shrink-0 h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <div className="ml-4">
+                          <p className="text-base font-medium text-gray-900">
+                            Events
+                          </p>
+                          <p className="mt-1 text-sm text-gray-500">
+                            See what meet-ups and other events we might be planning near you.
+                          </p>
+                        </div>
+                      </a>
+                      <a href="#" className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
+                        {/* Heroicon name: outline/shield-check */}
+                        <svg className="flex-shrink-0 h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                        <div className="ml-4">
+                          <p className="text-base font-medium text-gray-900">
+                            Security
+                          </p>
+                          <p className="mt-1 text-sm text-gray-500">
+                            Understand how we take your privacy seriously.
+                          </p>
+                        </div>
+                      </a>
+                    </div>
+                    <div className="px-5 py-5 bg-gray-50 sm:px-8 sm:py-8">
+                      <div>
+                        <h3 className="text-sm tracking-wide font-medium text-gray-500 uppercase">
+                          Recent Posts
+                        </h3>
+                        <ul className="mt-4 space-y-4">
+                          <li className="text-base truncate">
+                            <a href="#" className="font-medium text-gray-900 hover:text-gray-700">
+                              Boost your conversion rate
+                            </a>
+                          </li>
+                          <li className="text-base truncate">
+                            <a href="#" className="font-medium text-gray-900 hover:text-gray-700">
+                              How to use search engine optimization to drive traffic to your site
+                            </a>
+                          </li>
+                          <li className="text-base truncate">
+                            <a href="#" className="font-medium text-gray-900 hover:text-gray-700">
+                              Improve your customer experience
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="mt-5 text-sm">
+                        <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500"> View all posts <span aria-hidden="true">→</span></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
               </div>
             </div>
           </div>
+
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <button className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
               <span className="sr-only">View notifications</span>
@@ -124,95 +205,47 @@ const Navbar = () => {
                 />
               </svg>
             </button>
-            {/* Profile dropdown */}
-            <div className="ml-3 relative">
-              <div>
-                <button
-                  type="button"
-                  className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                  id="user-menu"
-                  aria-expanded="false"
-                  aria-haspopup="true"
-                >
-                  <span className="sr-only">Open user menu</span>
-                  <img
-                    className="h-8 w-8 rounded-full"
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt=""
-                  />
-                </button>
-              </div>
-              {/*
-                Dropdown menu, show/hide based on menu state.
-                Entering: "transition ease-out duration-100"
-                    From: "transform opacity-0 scale-95"
-                    To: "transform opacity-100 scale-100"
-                Leaving: "transition ease-in duration-75"
-                    From: "transform opacity-100 scale-100"
-                    To: "transform opacity-0 scale-95"
-                */}
-              <div
-                className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-                role="menu"
-                aria-orientation="vertical"
-                aria-labelledby="user-menu"
-              >
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  role="menuitem"
-                >
-                  Your Profile
-                </a>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  role="menuitem"
-                >
-                  Settings
-                </a>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  role="menuitem"
-                >
-                  Sign out
-                </a>
-              </div>
+
+            {/* เมนูด้านขวา */}
+            <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+              <NavLink exact to="/signin" className="whitespace-nowrap text-sm font-medium text-gray-300 hover:text-white">
+                Sign in
+              </NavLink>
+              <NavLink exact to="/signup" className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-3 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-700 hover:bg-red-900">
+                Sign up
+              </NavLink>
             </div>
+
+
           </div>
         </div>
       </div>
-      {/* Mobile menu, show/hide based on menu state. */}
-      <div className="sm:hidden" id="mobile-menu">
-        <div className="px-2 pt-2 pb-3 space-y-1">
-          {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-          <a
-            href="#"
-            className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Dashboard
-          </a>
-          <a
-            href="#"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Team
-          </a>
-          <a
-            href="#"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Projects
-          </a>
-          <a
-            href="#"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Calendar
-          </a>
-        </div>
-      </div>
+
+          {/* เมนูโหมด Mobile */}
+          <div className="sm:hidden block" id="mobile-menu">
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
+              <NavLink exact to="/" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" >
+                Home
+              </NavLink>
+              <NavLink exact to="/about" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" >
+                About
+              </NavLink>
+              <NavLink exact to="/teams" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" >
+                Teams
+              </NavLink>
+              <NavLink exact to="/projects" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" >
+                Projects
+              </NavLink>
+              <button type="button" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 inline-flex rounded-md text-sm font-medium" aria-expanded="false">
+                  <span>More</span>
+                  <svg className="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+                  </svg>
+                  
+                </button>
+            </div>
+          </div>
     </nav>
   )
 }
