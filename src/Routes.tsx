@@ -7,6 +7,7 @@ import Dashboard from './pages/dashboard/Dashboard'
 import Home from './pages/home/Home'
 import Login from './pages/login/Login'
 import PageNotFound from './pages/pagenotfound/PageNotFound'
+import Product from './pages/product/Product'
 import Project from './pages/project/Project'
 import Register from './pages/register/Register'
 import Team from './pages/team/Team'
@@ -30,6 +31,7 @@ const Routes = () => {
             <AppRoute path="/register" layout={AuthLayout} component={Register} />
 
             <AppRoute path="/dashboard" layout={AdminLayout} component={Dashboard} />
+            <AppRoute path="/products" layout={AdminLayout} component={Product} />
 
             <Route component={PageNotFound} />
         </Switch>
