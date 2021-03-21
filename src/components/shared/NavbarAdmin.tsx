@@ -1,14 +1,11 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import {useState, useRef} from 'react';
 import { NavLink } from 'react-router-dom'
-import { Transition } from '@headlessui/react'
-import useOutsideClick from "./useOutsideClick";
 
 const NavbarAdmin = () => {
     return (
-        <nav className="bg-gray-800">
-        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <nav className="bg-gray-800 fixed w-full">
+        <div className="px-2 sm:px-6 lg:px-8">
             <div className="relative flex items-center justify-between h-16">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
